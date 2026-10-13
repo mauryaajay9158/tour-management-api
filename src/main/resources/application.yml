@@ -1,0 +1,49 @@
+server:
+  port: ${PORT:8080}
+  servlet:
+    contextPath: /api/v1
+  error:
+    include-message: always
+    include-stacktrace: never
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:file:./data/tour_management;NON_KEYWORDS=DAY}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME:org.h2.Driver}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  main:
+    web-application-type: servlet
+    banner-mode: off
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+jwt:
+  access:
+    key: ${JWT_ACCESS_KEY:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+  refresh:
+    key: ${JWT_REFRESH_KEY:5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437}
+
+app:
+  url: http://localhost:8080

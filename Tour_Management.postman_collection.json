@@ -1,0 +1,1015 @@
+{
+	"info": {
+		"_postman_id": "c1f729e2-7634-4bc1-9d2a-87fe48d94c1a",
+		"name": "Tour Management API",
+		"description": "Comprehensive Postman collection covering all features of the Spring Boot Tour Management Application, developed by Ajay Kushwaha (BE IT, Mumbai University).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "accessToken",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "1. Authentication",
+			"item": [
+				{
+					"name": "Register New Account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin123\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					}
+				},
+				{
+					"name": "Login (Get JWT Token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.accessToken) {",
+									"    pm.collectionVariables.set(\"accessToken\", jsonData.accessToken);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin123\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					}
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"YOUR_REFRESH_TOKEN_HERE\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/refresh-token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"refresh-token"
+							]
+						}
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/auth/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Provinces & Sightseeing Spots",
+			"item": [
+				{
+					"name": "Create Province",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"id\": 1,\n        \"name\": \"Da Nang\",\n        \"codename\": \"da_nang\"\n    }\n]"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/provinces",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"provinces"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Provinces",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/provinces",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"provinces"
+							]
+						}
+					}
+				},
+				{
+					"name": "Add Sightseeing Spot to Province",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Ba Na Hills\",\n    \"address\": \"Hoa Vang, Da Nang\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/provinces/1/sightseeing-spots",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"provinces",
+								"1",
+								"sightseeing-spots"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Sightseeing Spots by Province ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/provinces/1/sightseeing-spots",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"provinces",
+								"1",
+								"sightseeing-spots"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Sightseeing Spots (Paginated)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/sightseeing-spots?page=0&itemsPerPage=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sightseeing-spots"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "itemsPerPage",
+									"value": "10"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Tour Guides",
+			"item": [
+				{
+					"name": "Create Tour Guide",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"address\": \"123 River Road, Da Nang\",\n    \"phoneNumber\": \"0901234567\",\n    \"email\": \"johndoe@example.com\",\n    \"idCard\": \"048200001234\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tour-guides",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tour-guides"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Tour Guides",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/tour-guides",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tour-guides"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Tour Guide by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/tour-guides/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tour-guides",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Tour Guide",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe Senior\",\n    \"address\": \"456 Ocean Boulevard, Da Nang\",\n    \"phoneNumber\": \"0901234567\",\n    \"email\": \"johnsenior@example.com\",\n    \"idCard\": \"048200001234\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tour-guides/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tour-guides",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Tours",
+			"item": [
+				{
+					"name": "Get All Tours",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/tours",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tours"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Tours (Raw List)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/tours/getAll",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tours",
+								"getAll"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Tour (Multipart Form-Data)",
+					"request": {
+						"method": "POST",
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Da Nang - Ba Na Hills 3D2N",
+									"type": "text"
+								},
+								{
+									"key": "duration",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "availableSeats",
+									"value": "25",
+									"type": "text"
+								},
+								{
+									"key": "gatheringAddress",
+									"value": "Da Nang International Airport",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "250.0",
+									"type": "text"
+								},
+								{
+									"key": "departureDate",
+									"value": "20/12/2026",
+									"type": "text"
+								},
+								{
+									"key": "endDate",
+									"value": "23/12/2026",
+									"type": "text"
+								},
+								{
+									"key": "departureLocation",
+									"value": "Da Nang",
+									"type": "text"
+								},
+								{
+									"key": "destinationLocation",
+									"value": "Ba Na Hills",
+									"type": "text"
+								},
+								{
+									"key": "idSightSeeing",
+									"value": "[1]",
+									"type": "text"
+								},
+								{
+									"key": "guide_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tours",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tours"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Tour by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/tours/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tours",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Search Tours by Name",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/tours/search-page?name=Da Nang&page=0&itemsPerPage=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tours",
+								"search-page"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Da Nang"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "itemsPerPage",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Filter Tours by Price Range",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/tours/filter?minPrice=100&maxPrice=500",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tours",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "minPrice",
+									"value": "100"
+								},
+								{
+									"key": "maxPrice",
+									"value": "500"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Top Rated Tours",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/tours/top-rating",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tours",
+								"top-rating"
+							]
+						}
+					}
+				},
+				{
+					"name": "Add Schedule to Tour",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Day 1: Arrival & Check-in\",\n    \"description\": \"Pick up from airport, check-in to resort, welcome dinner.\",\n    \"day\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tours/1/schedules",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tours",
+								"1",
+								"schedules"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Schedules of Tour",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/tours/1/schedules",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tours",
+								"1",
+								"schedules"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Customers",
+			"item": [
+				{
+					"name": "Create Customer (Multipart Form-Data)",
+					"request": {
+						"method": "POST",
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Alice Nguyen",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "789 Le Loi Street, Da Nang",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "0987654321",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "alice@example.com",
+									"type": "text"
+								},
+								{
+									"key": "idCard",
+									"value": "048200009999",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "dateOfBirth",
+									"value": "15/08/1998",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Customers",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/customers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Customer by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/customers/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "6. Discounts",
+			"item": [
+				{
+					"name": "Create Discount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"SUMMER20\",\n    \"discountPercentage\": 20.0,\n    \"tourId\": 1,\n    \"startDate\": \"01/01/2026\",\n    \"endDate\": \"31/12/2026\",\n    \"quantityDiscounts\": 50,\n    \"status\": \"ACTIVE\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/discount",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"discount"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Discounts",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/discount",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"discount"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Discounts by Tour ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/discount/tour/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"discount",
+								"tour",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Assign Discount to Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"discountId\": 1,\n    \"customerId\": 1,\n    \"tourId\": 1,\n    \"usageDate\": \"20/12/2026\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer-discount",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer-discount"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Customer Discounts",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/customer-discount/customer/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer-discount",
+								"customer",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "7. Bookings",
+			"item": [
+				{
+					"name": "Book a Tour",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": 1,\n    \"tourId\": 1,\n    \"note\": \"Require vegetarian meals\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/booked-tour",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booked-tour"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Booked Tours (Paginated)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/booked-tour?page=0&itemsPerPage=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booked-tour"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "itemsPerPage",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Booked Tour by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/booked-tour/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booked-tour",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Bookings by Customer",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/booked-tour/customer/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booked-tour",
+								"customer",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Booking Status",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"confirmed\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/booked-tour/1/status",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"booked-tour",
+								"1",
+								"status"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "8. Reviews & Ratings",
+			"item": [
+				{
+					"name": "Create Review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": 1,\n    \"tourId\": 1,\n    \"comment\": \"Exceptional tour and wonderful guide! Highly recommend.\",\n    \"rating\": 5.0\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/reviews",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Reviews",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/reviews",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Reviews for Tour",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/reviews/tour/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews",
+								"tour",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "9. Dashboard & Analytics",
+			"item": [
+				{
+					"name": "Get Quantity Statistics",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/dash-board/quantity-statistic",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"dash-board",
+								"quantity-statistic"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Today Tours",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/dash-board/today-tour",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"dash-board",
+								"today-tour"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Top Amazing Provinces",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/dash-board/top-amazing-province",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"dash-board",
+								"top-amazing-province"
+							]
+						}
+					}
+				}
+			]
+		}
+	]
+}
