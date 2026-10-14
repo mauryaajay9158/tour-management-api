@@ -2,7 +2,8 @@
 
 A comprehensive, production-ready **Spring Boot 3** REST API backend for managing tours, bookings, customer relationships, tour guides, reviews, and administrative dashboards.
 
-> **Developer**: **Ajay Kushwaha** (BE IT, Mumbai University)
+> **Developer**: **Ajay Kushwaha** (BE IT, Mumbai University)  
+> **Live API URL**: [https://travel-and-tourism-mngt.onrender.com/api/v1](https://travel-and-tourism-mngt.onrender.com/api/v1)
 
 ---
 
