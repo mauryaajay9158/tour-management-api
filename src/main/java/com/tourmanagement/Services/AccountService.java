@@ -11,6 +11,12 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 @Service
 public class AccountService {
     private final AccountRepository accountRepository;

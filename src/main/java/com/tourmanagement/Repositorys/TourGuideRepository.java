@@ -10,6 +10,12 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public interface TourGuideRepository extends JpaRepository<TourGuide, Long> {
 
 }

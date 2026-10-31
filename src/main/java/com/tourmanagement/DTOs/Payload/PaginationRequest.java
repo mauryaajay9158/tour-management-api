@@ -2,6 +2,12 @@ package com.tourmanagement.DTOs.Payload;
 
 import lombok.Data;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public class PaginationRequest {
     private int page = 0;
     private int itemsPerPage = 10;

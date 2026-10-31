@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 @RestController
 @RequestMapping("/reviews")
 @ResponseStatus(HttpStatus.OK)

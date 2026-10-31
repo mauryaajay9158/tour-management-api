@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(BindException.class)

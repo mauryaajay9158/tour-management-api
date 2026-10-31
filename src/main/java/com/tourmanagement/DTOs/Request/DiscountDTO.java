@@ -6,6 +6,12 @@ import lombok.*;
 
 import java.util.Date;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public class DiscountDTO {
 
     @NotNull(message = "Code cannot be null")

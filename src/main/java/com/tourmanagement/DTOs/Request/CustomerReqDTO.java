@@ -11,6 +11,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public class CustomerReqDTO {
     @NotNull(message = "Name cannot be null!")
     private String name;

@@ -7,6 +7,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public class FilterRevenue {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date startDate;

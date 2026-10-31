@@ -13,6 +13,12 @@ import org.springframework.data.domain.Pageable;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public interface TourRepository extends JpaRepository<Tour, Long>, TourRepositoryCustom {
 
     List<Tour> findByPriceBetween(Double minPrice, Double maxPrice);

@@ -17,6 +17,12 @@ import java.util.function.Function;
 
 import static com.tourmanagement.Shared.Constant.ACCESS_TYPE;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 @Service
 public class JwtService {
     @Value("${jwt.access.key}")

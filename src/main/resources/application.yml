@@ -27,7 +27,7 @@ spring:
 
   main:
     web-application-type: servlet
-    banner-mode: off
+    banner-mode: console
 
   mail:
     host: smtp.gmail.com
@@ -48,4 +48,8 @@ jwt:
     key: ${JWT_REFRESH_KEY:5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437}
 
 app:
-  url: http://localhost:8080
+  name: Wanderlust Tour & Travel Management System
+  version: 1.0.0
+  developer: Ajay Kushwaha
+  institution: BE IT, Mumbai University
+  url: ${APP_URL:https://travel-and-tourism-mngt.onrender.com}

@@ -13,6 +13,12 @@ import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public class TourDTO {
     @NotNull(message = "Name cannot be null")
     private String name;

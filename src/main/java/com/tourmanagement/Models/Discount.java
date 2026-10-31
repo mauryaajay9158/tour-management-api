@@ -7,6 +7,12 @@ import lombok.*;
 import java.util.Date;
 
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 @Entity
 @Table(name = "discounts")
 public class Discount {

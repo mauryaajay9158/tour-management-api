@@ -9,6 +9,12 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public interface DiscountRepository extends JpaRepository<Discount, Long> {
 
     @Query("SELECT d FROM Discount d WHERE d.tour.id = :tourId")

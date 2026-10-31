@@ -7,6 +7,12 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public class TourGuideDTO implements Serializable {
     @NotNull(message = "Name cannot be null!")
     @Size(min = 2, message = "Name must have 2 characters at least")

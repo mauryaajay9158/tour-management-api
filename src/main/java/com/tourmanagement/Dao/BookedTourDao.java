@@ -8,6 +8,12 @@ import com.tourmanagement.Models.BookedTour;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public interface BookedTourDao {
     public List<BookedTour> filter(FilterBookedTour filter);
     public Long filterCount(FilterBookedTour filter);

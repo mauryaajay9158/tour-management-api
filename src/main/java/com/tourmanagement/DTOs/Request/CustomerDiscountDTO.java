@@ -10,6 +10,12 @@ import lombok.Setter;
 
 import java.util.Date;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public class CustomerDiscountDTO {
 
     @NotNull(message = "Discount ID cannot be null!")

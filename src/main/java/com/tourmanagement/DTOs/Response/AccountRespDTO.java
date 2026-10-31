@@ -3,6 +3,12 @@ package com.tourmanagement.DTOs.Response;
 
 import lombok.Data;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public class AccountRespDTO {
     private String username;
     private String accessToken;

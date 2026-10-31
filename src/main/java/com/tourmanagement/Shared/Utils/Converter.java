@@ -11,6 +11,12 @@ import java.text.Normalizer;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public class Converter {
     public static List<String> convertJsonImagesToListImages(String jsonImages) {
         Gson gson = new Gson();
@@ -26,9 +32,9 @@ public class Converter {
         try {
             return objectMapper.writeValueAsString(idSightseeingList);
         } catch (JsonProcessingException e) {
-            // Xử lý ngoại lệ nếu có
+           
             e.printStackTrace();
-            return null; // hoặc throw một ngoại lệ khác tùy thuộc vào yêu cầu của bạn
+            return null; 
         }
     }
 

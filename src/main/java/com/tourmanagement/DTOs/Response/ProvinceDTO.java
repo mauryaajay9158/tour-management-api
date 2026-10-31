@@ -3,6 +3,12 @@ package com.tourmanagement.DTOs.Response;
 import com.tourmanagement.Models.Province;
 import lombok.Data;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public class ProvinceDTO {
     private Long id;
     private String name;

@@ -11,6 +11,12 @@ import lombok.Setter;
 
 import java.util.Date;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public class BookedTourRespDTO {
     private Long id;
     private Customer customer;

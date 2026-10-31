@@ -37,6 +37,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 @Service
 public class TourService {
     private final TourRepository tourRepository;
@@ -228,18 +234,17 @@ public class TourService {
         result.setPage(pagination.getPage());
         result.setItemsPerPage(pagination.getItemsPerPage());
         Sort sort;
-        // Sort theo tên tăng dần
+        // Sort by tour name (ascending or descending)
         if (Objects.equals(type, "desc")){
             sort = Sort.by(Sort.Order.desc("name"));
         } else {
             sort = Sort.by(Sort.Order.asc("name"));
         }
 
-
-        // Tạo Pageable object với Sort
+        // Create Pageable configuration with Sort
         Pageable pageable = PageRequest.of(pagination.getPage(), pagination.getItemsPerPage(), sort);
 
-        // Lấy danh sách Tour theo trang và sắp xếp
+        // Fetch paginated and sorted tours from repository
         Page<Tour> tourPage = tourRepository.findAll(pageable);
 
         result.setTotal(tourPage.getTotalElements());

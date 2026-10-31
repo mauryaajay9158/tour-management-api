@@ -19,6 +19,12 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 @Service
 public class AuthService {
     private final AccountService accountService;

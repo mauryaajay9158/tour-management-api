@@ -23,6 +23,12 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.*;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 @Service
 public class ImageService {
     @Value("${app.url}")

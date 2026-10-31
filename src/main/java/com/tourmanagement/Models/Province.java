@@ -3,6 +3,12 @@ package com.tourmanagement.Models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 @Entity
 @Table(name = "provinces")
 public class Province {

@@ -7,6 +7,12 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public class TourGuideRespDTO {
     private Long id;
     private String name;

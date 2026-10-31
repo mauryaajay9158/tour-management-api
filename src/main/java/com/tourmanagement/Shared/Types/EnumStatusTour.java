@@ -1,9 +1,15 @@
 package com.tourmanagement.Shared.Types;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public enum EnumStatusTour {
-    NOSTART("Chưa diễn ra"),
-    STARTED("Đang diễn ra"),
-    FINISHED("Đã kết thúc");
+    NOSTART("Upcoming"),
+    STARTED("In Progress"),
+    FINISHED("Completed");
 
     private final String status;
 

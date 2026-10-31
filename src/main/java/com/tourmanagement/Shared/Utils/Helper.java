@@ -5,6 +5,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public class Helper {
     public static List<Date> getDateList(Date startDate, Date endDate) {
         List<Date> dateList = new ArrayList<>();

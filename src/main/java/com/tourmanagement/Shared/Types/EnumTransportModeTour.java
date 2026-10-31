@@ -1,8 +1,14 @@
 package com.tourmanagement.Shared.Types;
 
+/**
+ * Wanderlust Tour & Travel Management System
+ * Final Year Major Project - Bachelor of Engineering (IT), Mumbai University
+ * 
+ * @author Ajay Kushwaha
+ */
 public enum EnumTransportModeTour {
-    BUS("Xe bus"),
-    PLANE("Máy bay");
+    BUS("Bus"),
+    PLANE("Flight");
 
     private final String transportation;
 
